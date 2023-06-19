@@ -16,8 +16,25 @@ pub mod bindings {
     include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 }
 
-const KB_FIND_VARIABLE: u8 = 17;
-const KB_SET_VALUE: u8 = 15;
+const KB_CMD1: u8 = 10; // for test only
+const KB_CMD2: u8 = 11; // for test only
+const KB_RESET: u8 = 12; // reset the piControl driver including the config file
+const KB_GET_DEVICE_INFO_LIST: u8 = 13; // get the device info of all detected devices
+const KB_GET_DEVICE_INFO: u8 = 14; // get the device info of one device
+const KB_GET_VALUE: u8 = 15; // get the value of one bit in the process image
+const KB_SET_VALUE: u8 = 16; // set the value of one bit in the process image
+const KB_FIND_VARIABLE: u8 = 17; // find a varible defined in piCtory
+const KB_SET_EXPORTED_OUTPUTS: u8 = 18; // copy the exported outputs from a application process image to the real process image
+const KB_UPDATE_DEVICE_FIRMWARE: u8 = 19; // try to update the firmware of connected devices
+const KB_DIO_RESET_COUNTER: u8 = 20; // set a counter or endocder to 0
+const KB_GET_LAST_MESSAGE: u8 = 21; // copy the last error message
+const KB_STOP_IO: u8 = 22; // stop/start IO communication, can be used for I/O simulation
+const KB_CONFIG_STOP: u8 = 23; // for download of configuration to Master Gateway: stop IO communication completely
+const KB_CONFIG_SEND: u8 = 24; // for download of configuration to Master Gateway: download config data
+const KB_CONFIG_START: u8 = 25; // for download of configuration to Master Gateway: restart IO communication
+const KB_SET_OUTPUT_WATCHDOG: u8 = 26; // activate a watchdog for this handle. If write is not called for a given period all outputs are set to 0
+const KB_SET_POS: u8 = 27; // set the f_pos, the unsigned int * is used to interpret the pos value
+const KB_AIO_CALIBRATE: u8 = 28;
 
 #[derive(Debug)]
 pub enum PiControlError {
